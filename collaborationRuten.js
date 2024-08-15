@@ -17037,7 +17037,7 @@ function postCreditCard(token2, formData) {
   ).then((res) => {
     var _a, _b, _c;
     if (((_a = res == null ? void 0 : res.data) == null ? void 0 : _a.status) === "OK") {
-      return { status: true, msg: "付款完成" };
+      return { status: true, href: "apply_ordlist.htm" };
     }
     if (((_b = res == null ? void 0 : res.data) == null ? void 0 : _b.status) === "ERROR") {
       return { msg: res.data.msg };
@@ -17084,7 +17084,7 @@ const _export_sfc = (sfc, props) => {
   }
   return target2;
 };
-const _withScopeId = (n) => (pushScopeId("data-v-8a4a18ff"), n = n(), popScopeId(), n);
+const _withScopeId = (n) => (pushScopeId("data-v-bc01d70c"), n = n(), popScopeId(), n);
 const _hoisted_1 = { class: "form-container" };
 const _hoisted_2 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("h2", { class: "text-2xl leading-10 text-orange-400" }, "已收到你的訂單，還差最後一步", -1));
 const _hoisted_3 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("p", { class: "mb-8 text-base leading-6 text-gray-600" }, "為了驗證廠商資料，請協助上傳以下文件，就可以開通服務囉。", -1));
@@ -17214,11 +17214,11 @@ const _sfc_main = {
       if (res.status) return true;
       return false;
     }
-    function open_box(URL2, W, H) {
+    function open_box() {
       if (!$.fancybox) return;
-      URL2 = "/pay_setting/cart_portage.htm";
-      W = 600;
-      H = 600;
+      const URL2 = "/pay_setting/cart_portage.htm";
+      const W = 600;
+      const H = 600;
       var fancyvars = {
         href: URL2,
         type: "iframe",
@@ -17499,7 +17499,7 @@ const _sfc_main = {
     };
   }
 };
-const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-8a4a18ff"]]);
+const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-bc01d70c"]]);
 const parents = /* @__PURE__ */ new Set();
 const coords = /* @__PURE__ */ new WeakMap();
 const siblings = /* @__PURE__ */ new WeakMap();
