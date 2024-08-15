@@ -16975,7 +16975,8 @@ function ruten_account_verify(ruten_account, btype) {
     }
   ).then((res) => {
     if (res.data.status === "OK") return false;
-    if (res.data.status === "ERROR") return true;
+    if (res.data.msg === "此會員帳號已有人使用") return true;
+    if (res.data.status === "ERROR") return false;
     return treu;
   }).catch((err) => {
     return true;
@@ -17084,7 +17085,7 @@ const _export_sfc = (sfc, props) => {
   }
   return target2;
 };
-const _withScopeId = (n) => (pushScopeId("data-v-1d996027"), n = n(), popScopeId(), n);
+const _withScopeId = (n) => (pushScopeId("data-v-a30a708e"), n = n(), popScopeId(), n);
 const _hoisted_1 = { class: "form-container" };
 const _hoisted_2 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("h2", { class: "text-2xl leading-10 text-orange-400" }, "已收到你的訂單，還差最後一步", -1));
 const _hoisted_3 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("p", { class: "mb-8 text-base leading-6 text-gray-600" }, "為了驗證廠商資料，請協助上傳以下文件，就可以開通服務囉。", -1));
@@ -17276,6 +17277,9 @@ const _sfc_main = {
                   label: "訂單明細",
                   type: "step",
                   name: "detail"
+                }, {
+                  stepPrevious: withCtx(() => []),
+                  _: 1
                 })
               ]),
               _: 1
@@ -17332,7 +17336,9 @@ const _sfc_main = {
                         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => ruten_account.value = $event),
                         validation: "required|alphanumeric|(800)account",
                         "validation-rules": { account },
-                        "validation-messages": { account: "此帳號尚未在露天註冊，請先前往露天市集註冊會員" }
+                        "validation-messages": {
+                          account: "此帳號不符合命名規定、或尚未在露天註冊，請先前往露天市集註冊會員"
+                        }
                       }, null, 8, ["modelValue", "validation-rules"]),
                       createVNode(_component_FormKit, {
                         label: "商品預設運送方式",
@@ -17505,7 +17511,7 @@ const _sfc_main = {
     };
   }
 };
-const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-1d996027"]]);
+const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-a30a708e"]]);
 const parents = /* @__PURE__ */ new Set();
 const coords = /* @__PURE__ */ new WeakMap();
 const siblings = /* @__PURE__ */ new WeakMap();

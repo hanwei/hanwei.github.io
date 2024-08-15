@@ -4718,6 +4718,18 @@ function createElementBlock(type, props, children, patchFlag, dynamicProps, shap
     )
   );
 }
+function createBlock(type, props, children, patchFlag, dynamicProps) {
+  return setupBlock(
+    createVNode(
+      type,
+      props,
+      children,
+      patchFlag,
+      dynamicProps,
+      true
+    )
+  );
+}
 function isVNode(value) {
   return value ? value.__v_isVNode === true : false;
 }
@@ -14967,7 +14979,6 @@ function postData(btype, caseData, formData) {
   body.append("caseid", caseData.caseId.value);
   body.append("rutid", formData.ruten_account);
   body.append("shipway", formData.shipway);
-  body.append("corp_doc", formData.corp_doc[0].file);
   return axios.post(
     `${host}/api/collaboration/chk_savedata.php`,
     body,
@@ -15002,10 +15013,40 @@ function ruten_account_verify(ruten_account, btype) {
     }
   ).then((res) => {
     if (res.data.status === "OK") return false;
-    if (res.data.status === "ERROR") return true;
+    if (res.data.msg === "此會員帳號已有人使用") return true;
+    if (res.data.status === "ERROR") return false;
     return treu;
   }).catch((err) => {
     return true;
+  });
+}
+function postAttachment(btype, attachments) {
+  const body = new FormData();
+  body.append("btype", btype);
+  const files2 = attachments.currentStep.value;
+  body.append("corp_doc", files2.corp_doc[0].file);
+  return axios.post(
+    `${host}/api/collaboration/chk_upload.php`,
+    body,
+    {
+      headers: {
+        "Accept": "application/json, text/javascript",
+        "Content-Type": "multipart/form-data; charset=UTF-8"
+      },
+      timeout: 6e4
+    }
+  ).then((res) => {
+    var _a, _b, _c;
+    if (((_a = res == null ? void 0 : res.data) == null ? void 0 : _a.status) === "OK") {
+      return { status: true, href: "apply_ordlist.htm" };
+    }
+    if (((_b = res == null ? void 0 : res.data) == null ? void 0 : _b.status) === "ERROR") {
+      return { msg: res.data.msg };
+    }
+    return { msg: ((_c = res == null ? void 0 : res.data) == null ? void 0 : _c.msg) || "附件上傳錯誤" };
+  }).catch((error2) => {
+    console.log(error2);
+    return { msg: "附件上傳異常" };
   });
 }
 const _export_sfc = (sfc, props) => {
@@ -15015,21 +15056,23 @@ const _export_sfc = (sfc, props) => {
   }
   return target2;
 };
-const _withScopeId = (n) => (pushScopeId("data-v-d7be3c69"), n = n(), popScopeId(), n);
+const _withScopeId = (n) => (pushScopeId("data-v-1622402f"), n = n(), popScopeId(), n);
 const _hoisted_1 = { class: "form-container" };
-const _hoisted_2 = { class: "flex flex-col max-w-xs p-6 mx-auto text-center text-gray-900 bg-white" };
-const _hoisted_3 = { class: "mb-4 text-2xl font-semibold" };
-const _hoisted_4 = { class: "font-light text-gray-500 sm:text-lg" };
-const _hoisted_5 = { class: "flex items-baseline justify-center my-8" };
-const _hoisted_6 = { class: "mr-2 text-5xl font-extrabold" };
-const _hoisted_7 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
-const _hoisted_8 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("a", null, "請按此下載PChomePay支付連實質受益人聲明書", -1));
+const _hoisted_2 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("h2", { class: "text-2xl leading-10 text-orange-400" }, "已收到你的訂單，還差最後一步", -1));
+const _hoisted_3 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("p", { class: "mb-8 text-base leading-6 text-gray-600" }, "為了驗證廠商資料，請協助上傳以下文件，就可以開通服務囉。", -1));
+const _hoisted_4 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("a", null, "請按此下載PChomePay支付連實質受益人聲明書", -1));
+const _hoisted_5 = { class: "flex flex-col max-w-xs p-6 mx-auto text-center text-gray-900 bg-white" };
+const _hoisted_6 = { class: "mb-4 text-2xl font-semibold" };
+const _hoisted_7 = { class: "font-light text-gray-500 sm:text-lg" };
+const _hoisted_8 = { class: "flex items-baseline justify-center my-8" };
+const _hoisted_9 = { class: "mr-2 text-5xl font-extrabold" };
+const _hoisted_10 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
 const _sfc_main = {
   __name: "AppFree",
   setup(__props) {
     const urlParams = new URLSearchParams(window.location.search);
     const btype = urlParams.get("btype") || "";
-    ref("false");
+    const goAttachment = ref("false");
     const caseId = ref("");
     const caseTitle = ref("");
     const caseIntro = ref("");
@@ -15044,11 +15087,15 @@ const _sfc_main = {
       { value: "CVS", label: "僅超商取貨(7-11、全家、萊爾富)" },
       { value: "LOW", label: "僅低溫寄送" }
     ]);
-    const agreement_1 = ref(false);
+    ref(false);
     fetchStatus(btype).then((obj) => {
       if (obj.msg) alert(obj.msg);
       if (obj.href) {
         location.href = obj.href;
+        return;
+      }
+      if (obj.step) {
+        goAttachment.value = true;
         return;
       }
       if (obj.data) {
@@ -15079,6 +15126,16 @@ const _sfc_main = {
       }
       return false;
     }
+    async function handleAttachementSubmit(formData) {
+      if (formData.delta !== 1) return false;
+      const res = await postAttachment(btype, formData);
+      if (res.msg) alert(res.msg);
+      if (res.href) {
+        location.href = res.href;
+      }
+      if (res.status) return true;
+      return false;
+    }
     function open_box() {
       if (!$.fancybox) return;
       const URL2 = "/pay_setting/cart_portage.htm";
@@ -15098,7 +15155,57 @@ const _sfc_main = {
     return (_ctx, _cache) => {
       const _component_FormKit = resolveComponent("FormKit");
       return openBlock(), createElementBlock("div", _hoisted_1, [
-        createVNode(_component_FormKit, {
+        goAttachment.value === true ? (openBlock(), createBlock(_component_FormKit, {
+          key: 0,
+          type: "form",
+          actions: false
+        }, {
+          default: withCtx(() => [
+            createVNode(_component_FormKit, {
+              type: "multi-step",
+              id: "multi-step",
+              "tab-style": "progress",
+              "allow-incomplete": false
+            }, {
+              default: withCtx(() => [
+                createVNode(_component_FormKit, {
+                  label: "上傳資料",
+                  type: "step",
+                  name: "attachment",
+                  id: "attachment",
+                  "next-label": "上傳",
+                  "before-step-change": handleAttachementSubmit
+                }, {
+                  default: withCtx(() => [
+                    _hoisted_2,
+                    _hoisted_3,
+                    _hoisted_4,
+                    createVNode(_component_FormKit, {
+                      type: "file",
+                      label: "實質受益人聲明書",
+                      name: "corp_doc",
+                      help: "格式限PDF、JPG、JPEG、PNG格式，大小限5M",
+                      accept: ".jpg,.png,.pdf",
+                      validation: "required"
+                    })
+                  ]),
+                  _: 1
+                }),
+                createVNode(_component_FormKit, {
+                  label: "訂單明細",
+                  type: "step",
+                  name: "detail"
+                }, {
+                  stepPrevious: withCtx(() => []),
+                  _: 1
+                })
+              ]),
+              _: 1
+            })
+          ]),
+          _: 1
+        })) : (openBlock(), createBlock(_component_FormKit, {
+          key: 1,
           type: "form",
           actions: false
         }, {
@@ -15118,11 +15225,11 @@ const _sfc_main = {
                   "before-step-change": _ctx.handleCaseSubmit
                 }, {
                   default: withCtx(() => [
-                    createBaseVNode("div", _hoisted_2, [
-                      createBaseVNode("h3", _hoisted_3, toDisplayString(caseTitle.value), 1),
-                      createBaseVNode("p", _hoisted_4, toDisplayString(caseIntro.value), 1),
-                      createBaseVNode("div", _hoisted_5, [
-                        createBaseVNode("span", _hoisted_6, "$" + toDisplayString(casePrice.value), 1)
+                    createBaseVNode("div", _hoisted_5, [
+                      createBaseVNode("h3", _hoisted_6, toDisplayString(caseTitle.value), 1),
+                      createBaseVNode("p", _hoisted_7, toDisplayString(caseIntro.value), 1),
+                      createBaseVNode("div", _hoisted_8, [
+                        createBaseVNode("span", _hoisted_9, "$" + toDisplayString(casePrice.value), 1)
                       ])
                     ])
                   ]),
@@ -15159,7 +15266,7 @@ const _sfc_main = {
                       help: withCtx(() => [
                         createBaseVNode("span", { class: "text-neutral-500 text-xs dark:text-neutral-400 formkit-help" }, [
                           createTextVNode(" 搬家到露天的商品會套用此運方式。"),
-                          _hoisted_7,
+                          _hoisted_10,
                           createTextVNode(" 請確認選擇的運送方式在"),
                           createBaseVNode("a", {
                             onClick: open_box,
@@ -15169,29 +15276,7 @@ const _sfc_main = {
                         ])
                       ]),
                       _: 1
-                    }, 8, ["value", "options"]),
-                    createVNode(_component_FormKit, {
-                      "validation-label": "以上資料",
-                      label: "我同意在商店街留存的資料（包含但不限於身分證影本資料及公司變更登記表等資料），得提供予露天市集國際資訊股份有限公司、拍付國際資訊股份有限公司留存",
-                      type: "checkbox",
-                      name: "agreement_1",
-                      value: agreement_1.value,
-                      validation: "accepted",
-                      "validation-visibility": "dirty"
-                    }, null, 8, ["value"]),
-                    createVNode(_component_FormKit, {
-                      type: "file",
-                      label: "實質受益人聲明書",
-                      name: "corp_doc",
-                      help: "格式限PDF、JPG、JPEG、PNG格式，大小限5M",
-                      accept: ".jpg,.png,.pdf",
-                      validation: "required"
-                    }, {
-                      help: withCtx(() => [
-                        _hoisted_8
-                      ]),
-                      _: 1
-                    })
+                    }, 8, ["value", "options"])
                   ]),
                   _: 1
                 }),
@@ -15208,12 +15293,12 @@ const _sfc_main = {
             })
           ]),
           _: 1
-        })
+        }))
       ]);
     };
   }
 };
-const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-d7be3c69"]]);
+const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-1622402f"]]);
 const parents = /* @__PURE__ */ new Set();
 const coords = /* @__PURE__ */ new WeakMap();
 const siblings = /* @__PURE__ */ new WeakMap();
