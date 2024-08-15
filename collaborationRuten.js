@@ -17084,7 +17084,7 @@ const _export_sfc = (sfc, props) => {
   }
   return target2;
 };
-const _withScopeId = (n) => (pushScopeId("data-v-bc01d70c"), n = n(), popScopeId(), n);
+const _withScopeId = (n) => (pushScopeId("data-v-1d996027"), n = n(), popScopeId(), n);
 const _hoisted_1 = { class: "form-container" };
 const _hoisted_2 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("h2", { class: "text-2xl leading-10 text-orange-400" }, "已收到你的訂單，還差最後一步", -1));
 const _hoisted_3 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("p", { class: "mb-8 text-base leading-6 text-gray-600" }, "為了驗證廠商資料，請協助上傳以下文件，就可以開通服務囉。", -1));
@@ -17201,6 +17201,9 @@ const _sfc_main = {
       if (formData.delta !== 1) return false;
       const res = await postCreditCard(token2.value, formData.currentStep.value);
       if (res.msg) alert(res.msg);
+      if (res.href) {
+        location.href = res.href;
+      }
       if (res.status) return true;
       return false;
     }
@@ -17488,6 +17491,9 @@ const _sfc_main = {
                   label: "訂單明細",
                   type: "step",
                   name: "detail"
+                }, {
+                  stepPrevious: withCtx(() => []),
+                  _: 1
                 })
               ]),
               _: 1
@@ -17499,7 +17505,7 @@ const _sfc_main = {
     };
   }
 };
-const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-bc01d70c"]]);
+const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-1d996027"]]);
 const parents = /* @__PURE__ */ new Set();
 const coords = /* @__PURE__ */ new WeakMap();
 const siblings = /* @__PURE__ */ new WeakMap();

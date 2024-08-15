@@ -5731,7 +5731,7 @@ var explicitKeys = [
   "__index",
   "__prevKey"
 ];
-function token$1() {
+function token() {
   return Math.random().toString(36).substring(2, 15);
 }
 function dedupe(arr1, arr2) {
@@ -6143,7 +6143,7 @@ function createEmitter() {
   };
   emitter.on = (eventName, listener, pos = "push") => {
     const [event, ...modifiers] = eventName.split(".");
-    const receipt = listener.receipt || token$1();
+    const receipt = listener.receipt || token();
     const wrapper2 = {
       modifiers,
       event,
@@ -6235,7 +6235,7 @@ function error(code, data = {}) {
 function createMessage(conf, node) {
   const m = {
     blocking: false,
-    key: token$1(),
+    key: token(),
     meta: {},
     type: "state",
     visible: true,
@@ -8444,7 +8444,7 @@ function createValidationPlugin(baseRules = {}) {
   return function validationPlugin(node) {
     let propRules = cloneAny(node.props.validationRules || {});
     let availableRules = { ...baseRules, ...propRules };
-    const state = { input: token$1(), rerun: null, isPassing: true };
+    const state = { input: token(), rerun: null, isPassing: true };
     let validation = cloneAny(node.props.validation);
     node.on("prop:validation", ({ payload }) => reboot(payload, propRules));
     node.on(
@@ -8475,7 +8475,7 @@ function createValidationPlugin(baseRules = {}) {
 function validate(node, validations, state) {
   if (isKilled(node))
     return;
-  state.input = token$1();
+  state.input = token();
   node.store.set(
     /* @__PURE__ */ createMessage({
       key: "failing",
@@ -10510,7 +10510,7 @@ function $if(condition, then, otherwise) {
     }
     return node;
   };
-  extendable._s = token$1();
+  extendable._s = token();
   return extendable;
 }
 // @__NO_SIDE_EFFECTS__
@@ -12393,7 +12393,7 @@ function useInput(props, context, options2 = {}) {
     };
     const attrs = except(nodeProps(context.attrs), pseudoProps);
     if (!attrs.key)
-      attrs.key = token$1();
+      attrs.key = token();
     initialProps2.attrs = attrs;
     const propValues = only(nodeProps(context.attrs), pseudoProps);
     for (const propName in propValues) {
@@ -14967,7 +14967,7 @@ function postData(btype, caseData, formData) {
   body.append("caseid", caseData.caseId.value);
   body.append("rutid", formData.ruten_account);
   body.append("shipway", formData.shipway);
-  body.append("corp_doc", formData.attachment.corp_doc[0].file);
+  body.append("corp_doc", formData.corp_doc[0].file);
   return axios.post(
     `${host}/api/collaboration/chk_savedata.php`,
     body,
@@ -15015,7 +15015,7 @@ const _export_sfc = (sfc, props) => {
   }
   return target2;
 };
-const _withScopeId = (n) => (pushScopeId("data-v-6bc2e1aa"), n = n(), popScopeId(), n);
+const _withScopeId = (n) => (pushScopeId("data-v-d7be3c69"), n = n(), popScopeId(), n);
 const _hoisted_1 = { class: "form-container" };
 const _hoisted_2 = { class: "flex flex-col max-w-xs p-6 mx-auto text-center text-gray-900 bg-white" };
 const _hoisted_3 = { class: "mb-4 text-2xl font-semibold" };
@@ -15074,27 +15074,16 @@ const _sfc_main = {
         caseId
       }, formData.currentStep.value);
       if (res.msg) alert(res.msg);
-      if (res.token) {
-        token.value = res.token;
-        return true;
-      }
-      return false;
-    }
-    async function handleAttachementSubmit(formData) {
-      if (formData.delta !== 1) return false;
-      const res = await postAttachment(btype, formData);
-      if (res.msg) alert(res.msg);
       if (res.href) {
         location.href = res.href;
       }
-      if (res.status) return true;
       return false;
     }
-    function open_box(URL2, W, H) {
+    function open_box() {
       if (!$.fancybox) return;
-      URL2 = "/pay_setting/cart_portage.htm";
-      W = 600;
-      H = 600;
+      const URL2 = "/pay_setting/cart_portage.htm";
+      const W = 600;
+      const H = 600;
       var fancyvars = {
         href: URL2,
         type: "iframe",
@@ -15148,67 +15137,57 @@ const _sfc_main = {
                 }, {
                   stepPrevious: withCtx(() => []),
                   default: withCtx(() => [
-                    createBaseVNode("div", null, [
-                      createVNode(_component_FormKit, {
-                        type: "text",
-                        name: "ruten_account",
-                        label: "露天帳號",
-                        help: "若您填寫的「露天帳號」不符合露天市集規範，或未通過露天實名認證審查，商品將無法搬家至露天市集，後續將有專人與您聯繫確認",
-                        modelValue: ruten_account.value,
-                        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => ruten_account.value = $event),
-                        validation: "required|alphanumeric|(800)account",
-                        "validation-rules": { account },
-                        "validation-messages": { account: "此帳號尚未在露天註冊，請先前往露天市集註冊會員" }
-                      }, null, 8, ["modelValue", "validation-rules"]),
-                      createVNode(_component_FormKit, {
-                        label: "商品預設運送方式",
-                        type: "select",
-                        value: shipway.value,
-                        name: "shipway",
-                        validation: "required",
-                        options: shipwayList.value
-                      }, {
-                        help: withCtx(() => [
-                          createBaseVNode("span", { class: "text-neutral-500 text-xs dark:text-neutral-400 formkit-help" }, [
-                            createTextVNode(" 搬家到露天的商品會套用此運方式。"),
-                            _hoisted_7,
-                            createTextVNode(" 請確認選擇的運送方式在"),
-                            createBaseVNode("a", {
-                              onClick: open_box,
-                              class: "cursor-pointer text-blue-400"
-                            }, "「付款方式 > 單店運費設定」"),
-                            createTextVNode(" 已設定運費金額 ")
-                          ])
-                        ]),
-                        _: 1
-                      }, 8, ["value", "options"]),
-                      createVNode(_component_FormKit, {
-                        "validation-label": "以上資料",
-                        label: "我同意在商店街留存的資料（包含但不限於身分證影本資料及公司變更登記表等資料），得提供予露天市集國際資訊股份有限公司、拍付國際資訊股份有限公司留存",
-                        type: "checkbox",
-                        name: "agreement_1",
-                        value: agreement_1.value,
-                        validation: "accepted",
-                        "validation-visibility": "dirty"
-                      }, null, 8, ["value"])
-                    ]),
                     createVNode(_component_FormKit, {
-                      label: "上傳資料",
-                      type: "step",
-                      name: "attachment",
-                      id: "attachment",
-                      "next-label": "上傳",
-                      "before-step-change": handleAttachementSubmit
+                      type: "text",
+                      name: "ruten_account",
+                      label: "露天帳號",
+                      help: "若您填寫的「露天帳號」不符合露天市集規範，或未通過露天實名認證審查，商品將無法搬家至露天市集，後續將有專人與您聯繫確認",
+                      modelValue: ruten_account.value,
+                      "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => ruten_account.value = $event),
+                      validation: "required|alphanumeric|(800)account",
+                      "validation-rules": { account },
+                      "validation-messages": { account: "此帳號尚未在露天註冊，請先前往露天市集註冊會員" }
+                    }, null, 8, ["modelValue", "validation-rules"]),
+                    createVNode(_component_FormKit, {
+                      label: "商品預設運送方式",
+                      type: "select",
+                      value: shipway.value,
+                      name: "shipway",
+                      validation: "required",
+                      options: shipwayList.value
                     }, {
-                      default: withCtx(() => [
-                        createVNode(_component_FormKit, {
-                          type: "file",
-                          label: "實質受益人聲明書",
-                          name: "corp_doc",
-                          help: "格式限PDF、JPG、JPEG、PNG格式，大小限5M",
-                          accept: ".jpg,.png,.pdf",
-                          validation: "required"
-                        }),
+                      help: withCtx(() => [
+                        createBaseVNode("span", { class: "text-neutral-500 text-xs dark:text-neutral-400 formkit-help" }, [
+                          createTextVNode(" 搬家到露天的商品會套用此運方式。"),
+                          _hoisted_7,
+                          createTextVNode(" 請確認選擇的運送方式在"),
+                          createBaseVNode("a", {
+                            onClick: open_box,
+                            class: "cursor-pointer text-blue-400"
+                          }, "「付款方式 > 單店運費設定」"),
+                          createTextVNode(" 已設定運費金額 ")
+                        ])
+                      ]),
+                      _: 1
+                    }, 8, ["value", "options"]),
+                    createVNode(_component_FormKit, {
+                      "validation-label": "以上資料",
+                      label: "我同意在商店街留存的資料（包含但不限於身分證影本資料及公司變更登記表等資料），得提供予露天市集國際資訊股份有限公司、拍付國際資訊股份有限公司留存",
+                      type: "checkbox",
+                      name: "agreement_1",
+                      value: agreement_1.value,
+                      validation: "accepted",
+                      "validation-visibility": "dirty"
+                    }, null, 8, ["value"]),
+                    createVNode(_component_FormKit, {
+                      type: "file",
+                      label: "實質受益人聲明書",
+                      name: "corp_doc",
+                      help: "格式限PDF、JPG、JPEG、PNG格式，大小限5M",
+                      accept: ".jpg,.png,.pdf",
+                      validation: "required"
+                    }, {
+                      help: withCtx(() => [
                         _hoisted_8
                       ]),
                       _: 1
@@ -15220,6 +15199,9 @@ const _sfc_main = {
                   label: "訂單明細",
                   type: "step",
                   name: "detail"
+                }, {
+                  stepPrevious: withCtx(() => []),
+                  _: 1
                 })
               ]),
               _: 1
@@ -15231,7 +15213,7 @@ const _sfc_main = {
     };
   }
 };
-const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-6bc2e1aa"]]);
+const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-d7be3c69"]]);
 const parents = /* @__PURE__ */ new Set();
 const coords = /* @__PURE__ */ new WeakMap();
 const siblings = /* @__PURE__ */ new WeakMap();
