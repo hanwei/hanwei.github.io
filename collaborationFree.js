@@ -14966,6 +14966,7 @@ function postData(btype, caseData, formData) {
   body.append("contractno", caseData.caseContractNo.value);
   body.append("caseid", caseData.caseId.value);
   body.append("rutid", formData.ruten_account);
+  body.append("shipway", formData.shipway);
   body.append("corp_doc", formData.attachment.corp_doc[0].file);
   return axios.post(
     `${host}/api/collaboration/chk_savedata.php`,
@@ -14991,9 +14992,9 @@ function postData(btype, caseData, formData) {
     return { msg: "資料上傳異常" };
   });
 }
-const ruten_account_verify = (ruten_account) => {
+function ruten_account_verify(ruten_account, btype) {
   return axios.post(
-    `${host}/api/collaboration/chk_rutid.php`,
+    `${host}/api/collaboration/chk_rutid.php?btype=${btype}`,
     `rutid=${ruten_account}`,
     {
       "Accept": "application/json, text/javascript",
@@ -15006,7 +15007,7 @@ const ruten_account_verify = (ruten_account) => {
   }).catch((err) => {
     return true;
   });
-};
+}
 const _export_sfc = (sfc, props) => {
   const target2 = sfc.__vccOpts || sfc;
   for (const [key, val] of props) {
@@ -15014,14 +15015,17 @@ const _export_sfc = (sfc, props) => {
   }
   return target2;
 };
-const _withScopeId = (n) => (pushScopeId("data-v-2ebb406e"), n = n(), popScopeId(), n);
+const _withScopeId = (n) => (pushScopeId("data-v-505e9234"), n = n(), popScopeId(), n);
 const _hoisted_1 = { class: "form-container" };
 const _hoisted_2 = { class: "flex flex-col max-w-xs p-6 mx-auto text-center text-gray-900 bg-white" };
 const _hoisted_3 = { class: "mb-4 text-2xl font-semibold" };
 const _hoisted_4 = { class: "font-light text-gray-500 sm:text-lg" };
 const _hoisted_5 = { class: "flex items-baseline justify-center my-8" };
 const _hoisted_6 = { class: "mr-2 text-5xl font-extrabold" };
-const _hoisted_7 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("a", null, "請按此下載PChomePay支付連實質受益人聲明書", -1));
+const _hoisted_7 = { class: "text-neutral-500 text-xs dark:text-neutral-400 formkit-help" };
+const _hoisted_8 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
+const _hoisted_9 = ["href"];
+const _hoisted_10 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("a", null, "請按此下載PChomePay支付連實質受益人聲明書", -1));
 const _sfc_main = {
   __name: "AppFree",
   setup(__props) {
@@ -15034,6 +15038,14 @@ const _sfc_main = {
     const casePrice = ref(0);
     const caseContractNo = ref("");
     const ruten_account = ref("");
+    const shipway = ref("");
+    const shipwayList = ref([
+      { value: "", label: "請選擇" },
+      { value: "ALL", label: "郵寄寄送、宅配、超商取貨(7-11、全家、萊爾富)" },
+      { value: "POS", label: "郵寄寄送、宅配" },
+      { value: "CVS", label: "僅超商取貨(7-11、全家、萊爾富)" },
+      { value: "LOW", label: "僅低溫寄送" }
+    ]);
     const agreement_1 = ref(false);
     fetchStatus(btype).then((obj) => {
       if (obj.msg) alert(obj.msg);
@@ -15054,7 +15066,7 @@ const _sfc_main = {
       }
     });
     async function account(item) {
-      return await ruten_account_verify(item.value);
+      return await ruten_account_verify(item.value, btype);
     }
     async function handleDataSubmit(formData) {
       if (formData.delta !== 1) return false;
@@ -15135,6 +15147,29 @@ const _sfc_main = {
                         "validation-messages": { account: "此帳號尚未在露天註冊，請先前往露天市集註冊會員" }
                       }, null, 8, ["modelValue", "validation-rules"]),
                       createVNode(_component_FormKit, {
+                        label: "商品預設運送方式",
+                        type: "select",
+                        value: shipway.value,
+                        name: "shipway",
+                        validation: "required",
+                        options: shipwayList.value
+                      }, {
+                        help: withCtx(() => [
+                          createBaseVNode("span", _hoisted_7, [
+                            createTextVNode(" 搬家到露天的商品會套用此運方式。"),
+                            _hoisted_8,
+                            createTextVNode(" 請確認選擇的運送方式在"),
+                            createBaseVNode("a", {
+                              href: `show_contract.htm?type=apply&contractno=${caseContractNo.value}`,
+                              target: "_blank",
+                              class: "text-blue-400"
+                            }, "「付款方式 > 單店運費設定」", 8, _hoisted_9),
+                            createTextVNode(" 已設定運費金額 ")
+                          ])
+                        ]),
+                        _: 1
+                      }, 8, ["value", "options"]),
+                      createVNode(_component_FormKit, {
                         "validation-label": "以上資料",
                         label: "我同意在商店街留存的資料（包含但不限於身分證影本資料及公司變更登記表等資料），得提供予露天市集國際資訊股份有限公司、拍付國際資訊股份有限公司留存",
                         type: "checkbox",
@@ -15161,7 +15196,7 @@ const _sfc_main = {
                           accept: ".jpg,.png,.pdf",
                           validation: "required"
                         }),
-                        _hoisted_7
+                        _hoisted_10
                       ]),
                       _: 1
                     })
@@ -15183,7 +15218,7 @@ const _sfc_main = {
     };
   }
 };
-const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-2ebb406e"]]);
+const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-505e9234"]]);
 const parents = /* @__PURE__ */ new Set();
 const coords = /* @__PURE__ */ new WeakMap();
 const siblings = /* @__PURE__ */ new WeakMap();
