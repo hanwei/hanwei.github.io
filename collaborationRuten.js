@@ -17084,7 +17084,7 @@ const _export_sfc = (sfc, props) => {
   }
   return target2;
 };
-const _withScopeId = (n) => (pushScopeId("data-v-48cfd55a"), n = n(), popScopeId(), n);
+const _withScopeId = (n) => (pushScopeId("data-v-8a4a18ff"), n = n(), popScopeId(), n);
 const _hoisted_1 = { class: "form-container" };
 const _hoisted_2 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("h2", { class: "text-2xl leading-10 text-orange-400" }, "已收到你的訂單，還差最後一步", -1));
 const _hoisted_3 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("p", { class: "mb-8 text-base leading-6 text-gray-600" }, "為了驗證廠商資料，請協助上傳以下文件，就可以開通服務囉。", -1));
@@ -17094,20 +17094,18 @@ const _hoisted_6 = { class: "mb-4 text-2xl font-semibold" };
 const _hoisted_7 = { class: "font-light text-gray-500 sm:text-lg" };
 const _hoisted_8 = { class: "flex items-baseline justify-center my-8" };
 const _hoisted_9 = { class: "mr-2 text-5xl font-extrabold" };
-const _hoisted_10 = { class: "text-neutral-500 text-xs dark:text-neutral-400 formkit-help" };
-const _hoisted_11 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
+const _hoisted_10 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
+const _hoisted_11 = { class: "block text-neutral-700 text-sm font-bold mb-1 !mb-0 !font-normal !text-sm dark:text-neutral-300 formkit-label" };
 const _hoisted_12 = ["href"];
-const _hoisted_13 = { class: "block text-neutral-700 text-sm font-bold mb-1 !mb-0 !font-normal !text-sm dark:text-neutral-300 formkit-label" };
-const _hoisted_14 = ["href"];
-const _hoisted_15 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("a", {
+const _hoisted_13 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("a", {
   href: "https://www.ruten.com.tw/help/member/4401/",
   target: "_blank",
   class: "text-blue-400"
 }, "露天市集會員合約", -1));
-const _hoisted_16 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("label", { class: "block mb-1 text-sm font-bold text-neutral-700 dark:text-neutral-300 formkit-label" }, "信用卡號 (限台灣核發之信用卡)", -1));
+const _hoisted_14 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("label", { class: "block mb-1 text-sm font-bold text-neutral-700 dark:text-neutral-300 formkit-label" }, "信用卡號 (限台灣核發之信用卡)", -1));
+const _hoisted_15 = { style: { "display": "flex", "flex": "0 0 30%", "gap": "6px" } };
+const _hoisted_16 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("label", { class: "block mb-1 text-sm font-bold text-neutral-700 dark:text-neutral-300 formkit-label" }, "有效截止月年", -1));
 const _hoisted_17 = { style: { "display": "flex", "flex": "0 0 30%", "gap": "6px" } };
-const _hoisted_18 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("label", { class: "block mb-1 text-sm font-bold text-neutral-700 dark:text-neutral-300 formkit-label" }, "有效截止月年", -1));
-const _hoisted_19 = { style: { "display": "flex", "flex": "0 0 30%", "gap": "6px" } };
 const _sfc_main = {
   __name: "AppRuten",
   setup(__props) {
@@ -17215,6 +17213,22 @@ const _sfc_main = {
       }
       if (res.status) return true;
       return false;
+    }
+    function open_box(URL2, W, H) {
+      if (!$.fancybox) return;
+      URL2 = "/pay_setting/cart_portage.htm";
+      W = 600;
+      H = 600;
+      var fancyvars = {
+        href: URL2,
+        type: "iframe",
+        openEffect: "none",
+        closeEffect: "none",
+        autoSize: false,
+        width: W,
+        height: H
+      };
+      $.fancybox.open(fancyvars);
     }
     return (_ctx, _cache) => {
       const _component_FormKit = resolveComponent("FormKit");
@@ -17326,15 +17340,14 @@ const _sfc_main = {
                         options: shipwayList.value
                       }, {
                         help: withCtx(() => [
-                          createBaseVNode("span", _hoisted_10, [
+                          createBaseVNode("span", { class: "text-neutral-500 text-xs dark:text-neutral-400 formkit-help" }, [
                             createTextVNode(" 搬家到露天的商品會套用此運方式。"),
-                            _hoisted_11,
+                            _hoisted_10,
                             createTextVNode(" 請確認選擇的運送方式在"),
                             createBaseVNode("a", {
-                              href: `show_contract.htm?type=apply&contractno=${caseContractNo.value}`,
-                              target: "_blank",
-                              class: "text-blue-400"
-                            }, "「付款方式 > 單店運費設定」", 8, _hoisted_12),
+                              onClick: open_box,
+                              class: "cursor-pointer text-blue-400"
+                            }, "「付款方式 > 單店運費設定」"),
                             createTextVNode(" 已設定運費金額 ")
                           ])
                         ]),
@@ -17350,15 +17363,15 @@ const _sfc_main = {
                         "validation-visibility": "dirty"
                       }, {
                         label: withCtx(() => [
-                          createBaseVNode("span", _hoisted_13, [
+                          createBaseVNode("span", _hoisted_11, [
                             createTextVNode(" 我同意 "),
                             createBaseVNode("a", {
                               href: `show_contract.htm?type=apply&contractno=${caseContractNo.value}`,
                               target: "_blank",
                               class: "text-blue-400"
-                            }, "專案合約書", 8, _hoisted_14),
+                            }, "專案合約書", 8, _hoisted_12),
                             createTextVNode(" 及 "),
-                            _hoisted_15,
+                            _hoisted_13,
                             createTextVNode(" 之約定")
                           ])
                         ]),
@@ -17386,8 +17399,8 @@ const _sfc_main = {
                 }, {
                   stepPrevious: withCtx(() => []),
                   default: withCtx(() => [
-                    _hoisted_16,
-                    createBaseVNode("div", _hoisted_17, [
+                    _hoisted_14,
+                    createBaseVNode("div", _hoisted_15, [
                       createVNode(_component_FormKit, {
                         type: "select",
                         value: credit_type.value,
@@ -17439,8 +17452,8 @@ const _sfc_main = {
                         "validation-messages": { required: "此為必填欄位", matches: "格式錯誤" }
                       }, null, 8, ["value"])
                     ]),
-                    _hoisted_18,
-                    createBaseVNode("div", _hoisted_19, [
+                    _hoisted_16,
+                    createBaseVNode("div", _hoisted_17, [
                       createVNode(_component_FormKit, {
                         label: "月",
                         type: "select",
@@ -17486,7 +17499,7 @@ const _sfc_main = {
     };
   }
 };
-const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-48cfd55a"]]);
+const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-8a4a18ff"]]);
 const parents = /* @__PURE__ */ new Set();
 const coords = /* @__PURE__ */ new WeakMap();
 const siblings = /* @__PURE__ */ new WeakMap();

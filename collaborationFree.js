@@ -15015,17 +15015,15 @@ const _export_sfc = (sfc, props) => {
   }
   return target2;
 };
-const _withScopeId = (n) => (pushScopeId("data-v-505e9234"), n = n(), popScopeId(), n);
+const _withScopeId = (n) => (pushScopeId("data-v-6bc2e1aa"), n = n(), popScopeId(), n);
 const _hoisted_1 = { class: "form-container" };
 const _hoisted_2 = { class: "flex flex-col max-w-xs p-6 mx-auto text-center text-gray-900 bg-white" };
 const _hoisted_3 = { class: "mb-4 text-2xl font-semibold" };
 const _hoisted_4 = { class: "font-light text-gray-500 sm:text-lg" };
 const _hoisted_5 = { class: "flex items-baseline justify-center my-8" };
 const _hoisted_6 = { class: "mr-2 text-5xl font-extrabold" };
-const _hoisted_7 = { class: "text-neutral-500 text-xs dark:text-neutral-400 formkit-help" };
-const _hoisted_8 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
-const _hoisted_9 = ["href"];
-const _hoisted_10 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("a", null, "請按此下載PChomePay支付連實質受益人聲明書", -1));
+const _hoisted_7 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
+const _hoisted_8 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("a", null, "請按此下載PChomePay支付連實質受益人聲明書", -1));
 const _sfc_main = {
   __name: "AppFree",
   setup(__props) {
@@ -15092,6 +15090,22 @@ const _sfc_main = {
       if (res.status) return true;
       return false;
     }
+    function open_box(URL2, W, H) {
+      if (!$.fancybox) return;
+      URL2 = "/pay_setting/cart_portage.htm";
+      W = 600;
+      H = 600;
+      var fancyvars = {
+        href: URL2,
+        type: "iframe",
+        openEffect: "none",
+        closeEffect: "none",
+        autoSize: false,
+        width: W,
+        height: H
+      };
+      $.fancybox.open(fancyvars);
+    }
     return (_ctx, _cache) => {
       const _component_FormKit = resolveComponent("FormKit");
       return openBlock(), createElementBlock("div", _hoisted_1, [
@@ -15155,15 +15169,14 @@ const _sfc_main = {
                         options: shipwayList.value
                       }, {
                         help: withCtx(() => [
-                          createBaseVNode("span", _hoisted_7, [
+                          createBaseVNode("span", { class: "text-neutral-500 text-xs dark:text-neutral-400 formkit-help" }, [
                             createTextVNode(" 搬家到露天的商品會套用此運方式。"),
-                            _hoisted_8,
+                            _hoisted_7,
                             createTextVNode(" 請確認選擇的運送方式在"),
                             createBaseVNode("a", {
-                              href: `show_contract.htm?type=apply&contractno=${caseContractNo.value}`,
-                              target: "_blank",
-                              class: "text-blue-400"
-                            }, "「付款方式 > 單店運費設定」", 8, _hoisted_9),
+                              onClick: open_box,
+                              class: "cursor-pointer text-blue-400"
+                            }, "「付款方式 > 單店運費設定」"),
                             createTextVNode(" 已設定運費金額 ")
                           ])
                         ]),
@@ -15196,7 +15209,7 @@ const _sfc_main = {
                           accept: ".jpg,.png,.pdf",
                           validation: "required"
                         }),
-                        _hoisted_10
+                        _hoisted_8
                       ]),
                       _: 1
                     })
@@ -15218,7 +15231,7 @@ const _sfc_main = {
     };
   }
 };
-const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-505e9234"]]);
+const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-6bc2e1aa"]]);
 const parents = /* @__PURE__ */ new Set();
 const coords = /* @__PURE__ */ new WeakMap();
 const siblings = /* @__PURE__ */ new WeakMap();
