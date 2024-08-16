@@ -17085,28 +17085,61 @@ const _export_sfc = (sfc, props) => {
   }
   return target2;
 };
-const _withScopeId = (n) => (pushScopeId("data-v-a30a708e"), n = n(), popScopeId(), n);
-const _hoisted_1 = { class: "form-container" };
-const _hoisted_2 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("h2", { class: "text-2xl leading-10 text-orange-400" }, "已收到你的訂單，還差最後一步", -1));
-const _hoisted_3 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("p", { class: "mb-8 text-base leading-6 text-gray-600" }, "為了驗證廠商資料，請協助上傳以下文件，就可以開通服務囉。", -1));
-const _hoisted_4 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("a", null, "請按此下載PChomePay支付連實質受益人聲明書", -1));
+const _withScopeId = (n) => (pushScopeId("data-v-2221d1d6"), n = n(), popScopeId(), n);
+const _hoisted_1 = {
+  class: "form-container",
+  width: "1000px"
+};
+const _hoisted_2 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("h2", { class: "text-2xl leading-10 text-orange-400" }, "請上傳實質受益人聲明書", -1));
+const _hoisted_3 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("ol", { class: "list-decimal text-sm formkit-help my-4" }, [
+  /* @__PURE__ */ createBaseVNode("li", { class: "mb-2" }, "若您填寫的「露天帳號」未通過「露天」及「支付連 (由拍付國際資訊股份有限公司營運)」實名認證審查，商品將無法搬家至露天市集。"),
+  /* @__PURE__ */ createBaseVNode("li", { class: "mb-2" }, [
+    /* @__PURE__ */ createTextVNode(" 請店家先下載"),
+    /* @__PURE__ */ createBaseVNode("a", {
+      class: "text-blue-400",
+      href: "https://img.pcstore.com.tw/store_ad/store/declaration_form_v4.pdf",
+      target: "_blank"
+    }, "「拍付國際資訊股份有限公司-高階管理人暨實質受益人聲明書」"),
+    /* @__PURE__ */ createTextVNode("並完成填寫後 "),
+    /* @__PURE__ */ createBaseVNode("a", {
+      class: "text-blue-400",
+      href: "https://img.pcstore.com.tw/store_ad/store/declaration_example_v4.pdf",
+      target: "_blank"
+    }, "(參考範例)"),
+    /* @__PURE__ */ createTextVNode("，上傳該資料。 ")
+  ]),
+  /* @__PURE__ */ createBaseVNode("li", { class: "mb-2" }, "若店家已通過商店街實名認證，我們會將此文件及「商店街實名認證通過之相關資料」提供予「露天市集」及「拍付」進行實名認證審查，若審查失敗將另行通知店家補件。")
+], -1));
+const _hoisted_4 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("hr", { class: "mb-8" }, null, -1));
 const _hoisted_5 = { class: "flex flex-col max-w-xs p-6 mx-auto text-center text-gray-900 bg-white" };
 const _hoisted_6 = { class: "mb-4 text-2xl font-semibold" };
 const _hoisted_7 = { class: "font-light text-gray-500 sm:text-lg" };
 const _hoisted_8 = { class: "flex items-baseline justify-center my-8" };
 const _hoisted_9 = { class: "mr-2 text-5xl font-extrabold" };
-const _hoisted_10 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
-const _hoisted_11 = { class: "block text-neutral-700 text-sm font-bold mb-1 !mb-0 !font-normal !text-sm dark:text-neutral-300 formkit-label" };
-const _hoisted_12 = ["href"];
-const _hoisted_13 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("a", {
-  href: "https://www.ruten.com.tw/help/member/4401/",
-  target: "_blank",
-  class: "text-blue-400"
-}, "露天市集會員合約", -1));
-const _hoisted_14 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("label", { class: "block mb-1 text-sm font-bold text-neutral-700 dark:text-neutral-300 formkit-label" }, "信用卡號 (限台灣核發之信用卡)", -1));
-const _hoisted_15 = { style: { "display": "flex", "flex": "0 0 30%", "gap": "6px" } };
-const _hoisted_16 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("label", { class: "block mb-1 text-sm font-bold text-neutral-700 dark:text-neutral-300 formkit-label" }, "有效截止月年", -1));
+const _hoisted_10 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("h2", { class: "mb-4 text-xl leading-10 text-orange-400 font-semi" }, "請店家留意", -1));
+const _hoisted_11 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("ol", { class: "text-sm formkit-help mb-4" }, [
+  /* @__PURE__ */ createBaseVNode("li", { class: "mb-2" }, "1.若您填寫的「露天帳號」不符合露天市集規範，或未通過「露天」及「支付連 (由拍付國際資訊股份有限公司營運)」實名認證審查，商品將無法搬家至露天市集，後續將另行通知店家確認是否更換露天帳號或實名認證補件事宜。 "),
+  /* @__PURE__ */ createBaseVNode("li", { class: "mb-2" }, "2.搬家商品之「露天運送方式」將儘量與商店街原設定值一致，若因兩個平台之規範不同以致設定值無法同步，將套用店家申請搬家時所選擇的「運送方式」。"),
+  /* @__PURE__ */ createBaseVNode("li", { class: "mb-2" }, "3.搬家商品之「露天結帳方式」將統一設定為：ATM、信用卡一次付清、Pi 拍錢包、信用卡0利率(3期/6期/12期)。"),
+  /* @__PURE__ */ createBaseVNode("li", { class: "mb-2" }, "4.搬家商品之「商品內容及圖片」將儘量與商店街原設定值一致，但有可能因兩個平台之規範不同，以致部分商品無法搬家到露天，或僅能搬移部分商品內容。"),
+  /* @__PURE__ */ createBaseVNode("li", { class: "mb-2" }, [
+    /* @__PURE__ */ createTextVNode("5.露天市集交易服務費及金物流費等相關收費辦法，以 "),
+    /* @__PURE__ */ createBaseVNode("a", {
+      class: "text-blue-400",
+      href: "https://seller.ruten.com.tw/notice",
+      target: "_blank"
+    }, "露天市集"),
+    /* @__PURE__ */ createTextVNode(" 官網公告為主")
+  ])
+], -1));
+const _hoisted_12 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("hr", { class: "mb-8" }, null, -1));
+const _hoisted_13 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
+const _hoisted_14 = { class: "block text-neutral-700 text-sm font-bold mb-1 !mb-0 !font-normal !text-sm dark:text-neutral-300 formkit-label" };
+const _hoisted_15 = ["href"];
+const _hoisted_16 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("label", { class: "block mb-1 text-sm font-bold text-neutral-700 dark:text-neutral-300 formkit-label" }, "信用卡號 (限台灣核發之信用卡)", -1));
 const _hoisted_17 = { style: { "display": "flex", "flex": "0 0 30%", "gap": "6px" } };
+const _hoisted_18 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("label", { class: "block mb-1 text-sm font-bold text-neutral-700 dark:text-neutral-300 formkit-label" }, "有效截止月年", -1));
+const _hoisted_19 = { style: { "display": "flex", "flex": "0 0 30%", "gap": "6px" } };
 const _sfc_main = {
   __name: "AppRuten",
   setup(__props) {
@@ -17318,6 +17351,7 @@ const _sfc_main = {
                   _: 1
                 }, 8, ["before-step-change"]),
                 createVNode(_component_FormKit, {
+                  width: "800px",
                   label: "填寫資料",
                   type: "step",
                   name: "info",
@@ -17326,12 +17360,15 @@ const _sfc_main = {
                 }, {
                   stepPrevious: withCtx(() => []),
                   default: withCtx(() => [
+                    _hoisted_10,
+                    _hoisted_11,
+                    _hoisted_12,
                     createBaseVNode("div", null, [
                       createVNode(_component_FormKit, {
                         type: "text",
                         name: "ruten_account",
                         label: "露天帳號",
-                        help: "若您填寫的「露天帳號」不符合露天市集規範，或未通過露天實名認證審查，商品將無法搬家至露天市集，後續將有專人與您聯繫確認",
+                        help: "請確認此帳號已經在露天註冊完畢",
                         modelValue: ruten_account.value,
                         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => ruten_account.value = $event),
                         validation: "required|alphanumeric|(800)account",
@@ -17351,7 +17388,7 @@ const _sfc_main = {
                         help: withCtx(() => [
                           createBaseVNode("span", { class: "text-neutral-500 text-xs dark:text-neutral-400 formkit-help" }, [
                             createTextVNode(" 搬家到露天的商品會套用此運方式。"),
-                            _hoisted_10,
+                            _hoisted_13,
                             createTextVNode(" 請確認選擇的運送方式在"),
                             createBaseVNode("a", {
                               onClick: open_box,
@@ -17363,7 +17400,7 @@ const _sfc_main = {
                         _: 1
                       }, 8, ["value", "options"]),
                       createVNode(_component_FormKit, {
-                        "validation-label": "專案合約書及露天市集會員合約",
+                        "validation-label": "露天小資方案條款",
                         type: "checkbox",
                         name: "agreement_1",
                         id: "agreement_1",
@@ -17372,16 +17409,14 @@ const _sfc_main = {
                         "validation-visibility": "dirty"
                       }, {
                         label: withCtx(() => [
-                          createBaseVNode("span", _hoisted_11, [
+                          createBaseVNode("span", _hoisted_14, [
                             createTextVNode(" 我同意 "),
                             createBaseVNode("a", {
                               href: `show_contract.htm?type=apply&contractno=${caseContractNo.value}`,
                               target: "_blank",
                               class: "text-blue-400"
-                            }, "專案合約書", 8, _hoisted_12),
-                            createTextVNode(" 及 "),
-                            _hoisted_13,
-                            createTextVNode(" 之約定")
+                            }, "【露天小資方案條款】", 8, _hoisted_15),
+                            createTextVNode(" 之約定 ")
                           ])
                         ]),
                         _: 1
@@ -17408,8 +17443,8 @@ const _sfc_main = {
                 }, {
                   stepPrevious: withCtx(() => []),
                   default: withCtx(() => [
-                    _hoisted_14,
-                    createBaseVNode("div", _hoisted_15, [
+                    _hoisted_16,
+                    createBaseVNode("div", _hoisted_17, [
                       createVNode(_component_FormKit, {
                         type: "select",
                         value: credit_type.value,
@@ -17461,8 +17496,8 @@ const _sfc_main = {
                         "validation-messages": { required: "此為必填欄位", matches: "格式錯誤" }
                       }, null, 8, ["value"])
                     ]),
-                    _hoisted_16,
-                    createBaseVNode("div", _hoisted_17, [
+                    _hoisted_18,
+                    createBaseVNode("div", _hoisted_19, [
                       createVNode(_component_FormKit, {
                         label: "月",
                         type: "select",
@@ -17511,7 +17546,7 @@ const _sfc_main = {
     };
   }
 };
-const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-a30a708e"]]);
+const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-2221d1d6"]]);
 const parents = /* @__PURE__ */ new Set();
 const coords = /* @__PURE__ */ new WeakMap();
 const siblings = /* @__PURE__ */ new WeakMap();
