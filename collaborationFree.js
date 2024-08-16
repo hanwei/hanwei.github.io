@@ -15056,7 +15056,7 @@ const _export_sfc = (sfc, props) => {
   }
   return target2;
 };
-const _withScopeId = (n) => (pushScopeId("data-v-fdc5528e"), n = n(), popScopeId(), n);
+const _withScopeId = (n) => (pushScopeId("data-v-88bc178d"), n = n(), popScopeId(), n);
 const _hoisted_1 = { class: "form-container" };
 const _hoisted_2 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("h2", { class: "text-2xl leading-10 text-orange-400" }, "請上傳實質受益人聲明書", -1));
 const _hoisted_3 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("ol", { class: "list-decimal text-sm formkit-help my-4" }, [
@@ -15094,7 +15094,7 @@ const _hoisted_11 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBas
     /* @__PURE__ */ createTextVNode("5.露天市集交易服務費及金物流費等相關收費辦法，以 "),
     /* @__PURE__ */ createBaseVNode("a", {
       class: "text-blue-400",
-      href: "https://seller.ruten.com.tw/notice",
+      href: "https://www.ruten.com.tw/help/member/5814/",
       target: "_blank"
     }, "露天市集"),
     /* @__PURE__ */ createTextVNode(" 官網公告為主")
@@ -15369,7 +15369,7 @@ const _sfc_main = {
     };
   }
 };
-const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-fdc5528e"]]);
+const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-88bc178d"]]);
 const parents = /* @__PURE__ */ new Set();
 const coords = /* @__PURE__ */ new WeakMap();
 const siblings = /* @__PURE__ */ new WeakMap();

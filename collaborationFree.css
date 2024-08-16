@@ -5291,14 +5291,14 @@ This file supports Tailwind CSS.
 formkit-outer
 If you need vanilla CSS it can go here.
 */
-.form-container[data-v-fdc5528e] {
+.form-container[data-v-88bc178d] {
   display: flex;
   justify-content: center;
   align-items: center;
   /* max-width: 100%;
   padding: 1rem; */
 }
-.form-field[data-v-fdc5528e] {
+.form-field[data-v-88bc178d] {
   width: 100%;
   max-width: 400px;
   /* 默认最大宽度 */
