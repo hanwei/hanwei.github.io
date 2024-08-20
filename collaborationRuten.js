@@ -17053,7 +17053,7 @@ function postAttachment(btype, attachments) {
   const body = new FormData();
   body.append("btype", btype);
   const files2 = attachments.currentStep.value;
-  body.append("corp_doc", files2.corp_doc[0].file);
+  body.append("owner_doc", files2.corp_doc[0].file);
   return axios.post(
     `${host}/api/collaboration/chk_upload.php`,
     body,
