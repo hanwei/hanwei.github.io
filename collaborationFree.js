@@ -15056,7 +15056,7 @@ const _export_sfc = (sfc, props) => {
   }
   return target2;
 };
-const _withScopeId = (n) => (pushScopeId("data-v-88bc178d"), n = n(), popScopeId(), n);
+const _withScopeId = (n) => (pushScopeId("data-v-68ad4cb2"), n = n(), popScopeId(), n);
 const _hoisted_1 = { class: "form-container" };
 const _hoisted_2 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("h2", { class: "text-2xl leading-10 text-orange-400" }, "請上傳實質受益人聲明書", -1));
 const _hoisted_3 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("ol", { class: "list-decimal text-sm formkit-help my-4" }, [
@@ -15305,7 +15305,7 @@ const _sfc_main = {
                     }, {
                       help: withCtx(() => [
                         createBaseVNode("span", { class: "text-neutral-500 text-xs dark:text-neutral-400 formkit-help" }, [
-                          createTextVNode(" 搬家到露天的商品會套用此運方式。"),
+                          createTextVNode(" 搬家到露天的商品會套用此運送方式。"),
                           _hoisted_13,
                           createTextVNode(" 請確認選擇的運送方式在"),
                           createBaseVNode("a", {
@@ -15318,7 +15318,7 @@ const _sfc_main = {
                       _: 1
                     }, 8, ["value", "options"]),
                     createVNode(_component_FormKit, {
-                      "validation-label": "露天小資方案條款",
+                      "validation-label": "露天VIP搬家服務條款",
                       type: "checkbox",
                       name: "agreement_1",
                       id: "agreement_1",
@@ -15333,21 +15333,12 @@ const _sfc_main = {
                             href: `show_contract.htm?type=apply&contractno=${caseContractNo.value}`,
                             target: "_blank",
                             class: "text-blue-400"
-                          }, "【免費方案條款】", 8, _hoisted_15),
+                          }, "【露天VIP搬家服務條款】", 8, _hoisted_15),
                           createTextVNode(" 之約定 ")
                         ])
                       ]),
                       _: 1
-                    }, 8, ["value"]),
-                    createVNode(_component_FormKit, {
-                      "validation-label": "以上資料",
-                      label: "我同意在商店街留存的資料（包含但不限於身分證影本資料及公司變更登記表等資料），得提供予露天市集國際資訊股份有限公司、拍付國際資訊股份有限公司留存",
-                      type: "checkbox",
-                      name: "agreement_2",
-                      value: _ctx.agreement_2,
-                      validation: "accepted",
-                      "validation-visibility": "dirty"
-                    }, null, 8, ["value"])
+                    }, 8, ["value"])
                   ]),
                   _: 1
                 }),
@@ -15369,7 +15360,7 @@ const _sfc_main = {
     };
   }
 };
-const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-88bc178d"]]);
+const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-68ad4cb2"]]);
 const parents = /* @__PURE__ */ new Set();
 const coords = /* @__PURE__ */ new WeakMap();
 const siblings = /* @__PURE__ */ new WeakMap();
