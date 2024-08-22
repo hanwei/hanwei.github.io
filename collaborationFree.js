@@ -15056,7 +15056,7 @@ const _export_sfc = (sfc, props) => {
   }
   return target2;
 };
-const _withScopeId = (n) => (pushScopeId("data-v-68ad4cb2"), n = n(), popScopeId(), n);
+const _withScopeId = (n) => (pushScopeId("data-v-dce34ddc"), n = n(), popScopeId(), n);
 const _hoisted_1 = { class: "form-container" };
 const _hoisted_2 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("h2", { class: "text-2xl leading-10 text-orange-400" }, "請上傳實質受益人聲明書", -1));
 const _hoisted_3 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("ol", { class: "list-decimal text-sm formkit-help my-4" }, [
@@ -15291,7 +15291,7 @@ const _sfc_main = {
                       help: "請確認此帳號已經在露天註冊完畢",
                       modelValue: ruten_account.value,
                       "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => ruten_account.value = $event),
-                      validation: "required|alphanumeric|(800)account",
+                      validation: "required|(800)account",
                       "validation-rules": { account },
                       "validation-messages": { account: "此帳號尚未在露天註冊，請先前往露天市集註冊會員" }
                     }, null, 8, ["modelValue", "validation-rules"]),
@@ -15360,7 +15360,7 @@ const _sfc_main = {
     };
   }
 };
-const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-68ad4cb2"]]);
+const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-dce34ddc"]]);
 const parents = /* @__PURE__ */ new Set();
 const coords = /* @__PURE__ */ new WeakMap();
 const siblings = /* @__PURE__ */ new WeakMap();
