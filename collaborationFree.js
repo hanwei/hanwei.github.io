@@ -4912,6 +4912,9 @@ function cloneVNode(vnode, extraProps, mergeRef = false, cloneTransition = false
 function createTextVNode(text2 = " ", flag = 0) {
   return createVNode(Text, null, text2, flag);
 }
+function createCommentVNode(text2 = "", asBlock = false) {
+  return asBlock ? (openBlock(), createBlock(Comment, null, text2)) : createVNode(Comment, null, text2);
+}
 function normalizeVNode(child) {
   if (child == null || typeof child === "boolean") {
     return createVNode(Comment);
@@ -15056,7 +15059,7 @@ const _export_sfc = (sfc, props) => {
   }
   return target2;
 };
-const _withScopeId = (n) => (pushScopeId("data-v-dce34ddc"), n = n(), popScopeId(), n);
+const _withScopeId = (n) => (pushScopeId("data-v-6ca55b76"), n = n(), popScopeId(), n);
 const _hoisted_1 = { class: "form-container" };
 const _hoisted_2 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("h2", { class: "text-2xl leading-10 text-orange-400" }, "請上傳實質受益人聲明書", -1));
 const _hoisted_3 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("ol", { class: "list-decimal text-sm formkit-help my-4" }, [
@@ -15101,9 +15104,34 @@ const _hoisted_11 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBas
   ])
 ], -1));
 const _hoisted_12 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("hr", { class: "mb-8" }, null, -1));
-const _hoisted_13 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
-const _hoisted_14 = { class: "block text-neutral-700 text-sm font-bold mb-1 !mb-0 !font-normal !text-sm dark:text-neutral-300 formkit-label" };
-const _hoisted_15 = ["href"];
+const _hoisted_13 = { class: "relative" };
+const _hoisted_14 = { class: "flex gap-1 flex-column" };
+const _hoisted_15 = {
+  key: 0,
+  class: "absolute z-10 overflow-hidden bg-white border-2 border-gray-500 rounded-md left-20",
+  style: { "top": "-220px" }
+};
+const _hoisted_16 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("div", { class: "p-2 m-2" }, [
+  /* @__PURE__ */ createTextVNode("帳號可前往"),
+  /* @__PURE__ */ createBaseVNode("a", {
+    href: "https://member.ruten.com.tw/user/editprofile.php",
+    target: "_blank",
+    class: "text-blue-400"
+  }, " 「露天市集 > 賣家中心 > 帳號 > 修改會員資料」"),
+  /* @__PURE__ */ createTextVNode("查詢")
+], -1));
+const _hoisted_17 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("img", {
+  style: { "max-width": "600px" },
+  src: "https://img.pcstore.com.tw/adm_img/st/ruten_buyinfo3.jpg",
+  alt: "如何查詢露天帳號？"
+}, null, -1));
+const _hoisted_18 = [
+  _hoisted_16,
+  _hoisted_17
+];
+const _hoisted_19 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
+const _hoisted_20 = { class: "block text-neutral-700 text-sm font-bold mb-1 !mb-0 !font-normal !text-sm dark:text-neutral-300 formkit-label" };
+const _hoisted_21 = ["href"];
 const _sfc_main = {
   __name: "AppFree",
   setup(__props) {
@@ -15116,6 +15144,7 @@ const _sfc_main = {
     const casePrice = ref(0);
     const caseContractNo = ref("");
     const ruten_account = ref("");
+    const isShowDescImage = ref(false);
     const shipway = ref("");
     const shipwayList = ref([
       { value: "", label: "請選擇" },
@@ -15284,17 +15313,32 @@ const _sfc_main = {
                     _hoisted_10,
                     _hoisted_11,
                     _hoisted_12,
-                    createVNode(_component_FormKit, {
-                      type: "text",
-                      name: "ruten_account",
-                      label: "露天帳號",
-                      help: "請確認此帳號已經在露天註冊完畢",
-                      modelValue: ruten_account.value,
-                      "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => ruten_account.value = $event),
-                      validation: "required|(800)account",
-                      "validation-rules": { account },
-                      "validation-messages": { account: "此帳號尚未在露天註冊，請先前往露天市集註冊會員" }
-                    }, null, 8, ["modelValue", "validation-rules"]),
+                    createBaseVNode("div", _hoisted_13, [
+                      createBaseVNode("div", _hoisted_14, [
+                        createVNode(_component_FormKit, {
+                          type: "text",
+                          name: "ruten_account",
+                          label: "露天帳號",
+                          help: "請確認此帳號已經在露天註冊完畢",
+                          modelValue: ruten_account.value,
+                          "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => ruten_account.value = $event),
+                          validation: "required|(800)account",
+                          "validation-rules": { account },
+                          "validation-messages": {
+                            account: "此帳號不符合命名規定、或尚未在露天註冊，請先前往露天市集註冊會員"
+                          }
+                        }, {
+                          help: withCtx(() => [
+                            createBaseVNode("span", {
+                              class: "block mb-1 text-sm font-bold text-blue-400 cursor-pointer",
+                              onClick: _cache[0] || (_cache[0] = ($event) => isShowDescImage.value = !isShowDescImage.value)
+                            }, toDisplayString(isShowDescImage.value ? "關閉說明" : "如何查詢露天帳號？"), 1)
+                          ]),
+                          _: 1
+                        }, 8, ["modelValue", "validation-rules"])
+                      ]),
+                      isShowDescImage.value ? (openBlock(), createElementBlock("div", _hoisted_15, _hoisted_18)) : createCommentVNode("", true)
+                    ]),
                     createVNode(_component_FormKit, {
                       label: "商品預設運送方式",
                       type: "select",
@@ -15306,7 +15350,7 @@ const _sfc_main = {
                       help: withCtx(() => [
                         createBaseVNode("span", { class: "text-neutral-500 text-xs dark:text-neutral-400 formkit-help" }, [
                           createTextVNode(" 搬家到露天的商品會套用此運送方式。"),
-                          _hoisted_13,
+                          _hoisted_19,
                           createTextVNode(" 請確認選擇的運送方式在"),
                           createBaseVNode("a", {
                             onClick: open_box,
@@ -15327,13 +15371,13 @@ const _sfc_main = {
                       "validation-visibility": "dirty"
                     }, {
                       label: withCtx(() => [
-                        createBaseVNode("span", _hoisted_14, [
+                        createBaseVNode("span", _hoisted_20, [
                           createTextVNode(" 我同意 "),
                           createBaseVNode("a", {
                             href: `show_contract.htm?type=apply&contractno=${caseContractNo.value}`,
                             target: "_blank",
                             class: "text-blue-400"
-                          }, "【露天VIP搬家服務條款】", 8, _hoisted_15),
+                          }, "【露天VIP搬家服務條款】", 8, _hoisted_21),
                           createTextVNode(" 之約定 ")
                         ])
                       ]),
@@ -15360,7 +15404,7 @@ const _sfc_main = {
     };
   }
 };
-const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-dce34ddc"]]);
+const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-6ca55b76"]]);
 const parents = /* @__PURE__ */ new Set();
 const coords = /* @__PURE__ */ new WeakMap();
 const siblings = /* @__PURE__ */ new WeakMap();
