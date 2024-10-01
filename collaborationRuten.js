@@ -16992,6 +16992,7 @@ function postData(btype, caseData, formData) {
   body.append("contractno", caseData.caseContractNo.value);
   body.append("caseid", caseData.caseId.value);
   body.append("caseid", caseData.caseId.value);
+  body.append("phone", formData.boss_mobile);
   body.append("rutid", formData.ruten_account);
   body.append("shipway", formData.shipway);
   return axios.post(
@@ -17088,7 +17089,7 @@ const _export_sfc = (sfc, props) => {
   }
   return target2;
 };
-const _withScopeId = (n) => (pushScopeId("data-v-a9750cfc"), n = n(), popScopeId(), n);
+const _withScopeId = (n) => (pushScopeId("data-v-170cbd04"), n = n(), popScopeId(), n);
 const _hoisted_1 = { class: "form-container" };
 const _hoisted_2 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("h2", { class: "text-2xl leading-10 text-orange-400" }, "請上傳實質受益人聲明書", -1));
 const _hoisted_3 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("ol", { class: "list-decimal text-sm formkit-help my-4" }, [
@@ -17135,12 +17136,13 @@ const _hoisted_11 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBas
 const _hoisted_12 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("hr", { class: "mb-8" }, null, -1));
 const _hoisted_13 = { class: "relative" };
 const _hoisted_14 = { class: "flex gap-1 flex-column" };
-const _hoisted_15 = {
+const _hoisted_15 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("div", { class: "text-xs text-neutral-500 dark:text-neutral-400 formkit-help" }, "請填寫「已完成露天會員認證」且「符合露天市集規範」之露天帳號", -1));
+const _hoisted_16 = {
   key: 0,
   class: "absolute z-10 overflow-hidden bg-white border-2 border-gray-500 rounded-md left-20",
   style: { "top": "-220px" }
 };
-const _hoisted_16 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("div", { class: "p-2 m-2" }, [
+const _hoisted_17 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("div", { class: "p-2 m-2" }, [
   /* @__PURE__ */ createTextVNode("帳號可前往"),
   /* @__PURE__ */ createBaseVNode("a", {
     href: "https://member.ruten.com.tw/user/editprofile.php",
@@ -17149,22 +17151,22 @@ const _hoisted_16 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBas
   }, " 「露天市集 > 賣家中心 > 帳號 > 修改會員資料」"),
   /* @__PURE__ */ createTextVNode("查詢")
 ], -1));
-const _hoisted_17 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("img", {
+const _hoisted_18 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("img", {
   style: { "max-width": "600px" },
   src: "https://img.pcstore.com.tw/adm_img/st/ruten_buyinfo3.jpg",
   alt: "如何查詢露天帳號？"
 }, null, -1));
-const _hoisted_18 = [
-  _hoisted_16,
-  _hoisted_17
+const _hoisted_19 = [
+  _hoisted_17,
+  _hoisted_18
 ];
-const _hoisted_19 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
-const _hoisted_20 = { class: "block text-neutral-700 text-sm font-bold mb-1 !mb-0 !font-normal !text-sm dark:text-neutral-300 formkit-label" };
-const _hoisted_21 = ["href"];
-const _hoisted_22 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("label", { class: "block mb-1 text-sm font-bold text-neutral-700 dark:text-neutral-300 formkit-label" }, "信用卡號 (限台灣核發之信用卡)", -1));
-const _hoisted_23 = { style: { "display": "flex", "flex": "0 0 30%", "gap": "6px" } };
-const _hoisted_24 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("label", { class: "block mb-1 text-sm font-bold text-neutral-700 dark:text-neutral-300 formkit-label" }, "有效截止月年", -1));
-const _hoisted_25 = { style: { "display": "flex", "flex": "0 0 30%", "gap": "6px" } };
+const _hoisted_20 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
+const _hoisted_21 = { class: "block text-neutral-700 text-sm font-bold mb-1 !mb-0 !font-normal !text-sm dark:text-neutral-300 formkit-label" };
+const _hoisted_22 = ["href"];
+const _hoisted_23 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("label", { class: "block mb-1 text-sm font-bold text-neutral-700 dark:text-neutral-300 formkit-label" }, "信用卡號 (限台灣核發之信用卡)", -1));
+const _hoisted_24 = { style: { "display": "flex", "flex": "0 0 30%", "gap": "6px" } };
+const _hoisted_25 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("label", { class: "block mb-1 text-sm font-bold text-neutral-700 dark:text-neutral-300 formkit-label" }, "有效截止月年", -1));
+const _hoisted_26 = { style: { "display": "flex", "flex": "0 0 30%", "gap": "6px" } };
 const _sfc_main = {
   __name: "AppRuten",
   setup(__props) {
@@ -17178,6 +17180,7 @@ const _sfc_main = {
     const caseContractNo = ref$1("");
     const ruten_account = ref$1("");
     const isShowDescImage = ref$1(false);
+    const boss_mobile = ref$1("");
     const shipway = ref$1("");
     const shipwayList = ref$1([
       { value: "", label: "請選擇" },
@@ -17405,6 +17408,7 @@ const _sfc_main = {
                             }
                           }, {
                             help: withCtx(() => [
+                              _hoisted_15,
                               createBaseVNode("span", {
                                 class: "block mb-1 text-sm font-bold text-blue-400 cursor-pointer",
                                 onClick: _cache[0] || (_cache[0] = ($event) => isShowDescImage.value = !isShowDescImage.value)
@@ -17413,8 +17417,18 @@ const _sfc_main = {
                             _: 1
                           }, 8, ["modelValue", "validation-rules"])
                         ]),
-                        isShowDescImage.value ? (openBlock(), createElementBlock("div", _hoisted_15, _hoisted_18)) : createCommentVNode("", true)
+                        isShowDescImage.value ? (openBlock(), createElementBlock("div", _hoisted_16, _hoisted_19)) : createCommentVNode("", true)
                       ]),
+                      createVNode(_component_FormKit, {
+                        label: "聯絡人手機",
+                        type: "text",
+                        name: "boss_mobile",
+                        modelValue: boss_mobile.value,
+                        "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => boss_mobile.value = $event),
+                        validation: "required|matches:/^09\\d{8}$/",
+                        maxlength: "10",
+                        "validation-messages": { matches: "手機格式錯誤" }
+                      }, null, 8, ["modelValue"]),
                       createVNode(_component_FormKit, {
                         label: "商品預設運送方式",
                         type: "select",
@@ -17425,8 +17439,8 @@ const _sfc_main = {
                       }, {
                         help: withCtx(() => [
                           createBaseVNode("span", { class: "text-neutral-500 text-xs dark:text-neutral-400 formkit-help" }, [
-                            createTextVNode(" 搬家到露天的商品會套用此運送方式。"),
-                            _hoisted_19,
+                            createTextVNode(" 搬家商品之「露天運送方式」將儘量與商店街原設定值一致，若因兩個平台之規範不同以致設定值無法同步，將套用此「商品預設運送方式」。"),
+                            _hoisted_20,
                             createTextVNode(" 請確認選擇的運送方式在"),
                             createBaseVNode("a", {
                               onClick: open_box,
@@ -17447,13 +17461,13 @@ const _sfc_main = {
                         "validation-visibility": "dirty"
                       }, {
                         label: withCtx(() => [
-                          createBaseVNode("span", _hoisted_20, [
+                          createBaseVNode("span", _hoisted_21, [
                             createTextVNode(" 我同意 "),
                             createBaseVNode("a", {
                               href: `show_contract.htm?type=apply&contractno=${caseContractNo.value}`,
                               target: "_blank",
                               class: "text-blue-400"
-                            }, "【露天搬家方案條款】", 8, _hoisted_21),
+                            }, "【露天搬家方案條款】", 8, _hoisted_22),
                             createTextVNode(" 之約定 ")
                           ])
                         ]),
@@ -17472,8 +17486,8 @@ const _sfc_main = {
                 }, {
                   stepPrevious: withCtx(() => []),
                   default: withCtx(() => [
-                    _hoisted_22,
-                    createBaseVNode("div", _hoisted_23, [
+                    _hoisted_23,
+                    createBaseVNode("div", _hoisted_24, [
                       createVNode(_component_FormKit, {
                         type: "select",
                         value: credit_type.value,
@@ -17525,8 +17539,8 @@ const _sfc_main = {
                         "validation-messages": { required: "此為必填欄位", matches: "格式錯誤" }
                       }, null, 8, ["value"])
                     ]),
-                    _hoisted_24,
-                    createBaseVNode("div", _hoisted_25, [
+                    _hoisted_25,
+                    createBaseVNode("div", _hoisted_26, [
                       createVNode(_component_FormKit, {
                         label: "月",
                         type: "select",
@@ -17575,7 +17589,7 @@ const _sfc_main = {
     };
   }
 };
-const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-a9750cfc"]]);
+const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-170cbd04"]]);
 const parents = /* @__PURE__ */ new Set();
 const coords = /* @__PURE__ */ new WeakMap();
 const siblings = /* @__PURE__ */ new WeakMap();
