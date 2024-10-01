@@ -15059,7 +15059,7 @@ const _export_sfc = (sfc, props) => {
   }
   return target2;
 };
-const _withScopeId = (n) => (pushScopeId("data-v-6ca55b76"), n = n(), popScopeId(), n);
+const _withScopeId = (n) => (pushScopeId("data-v-6d62c480"), n = n(), popScopeId(), n);
 const _hoisted_1 = { class: "form-container" };
 const _hoisted_2 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("h2", { class: "text-2xl leading-10 text-orange-400" }, "請上傳實質受益人聲明書", -1));
 const _hoisted_3 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("ol", { class: "list-decimal text-sm formkit-help my-4" }, [
@@ -15106,12 +15106,13 @@ const _hoisted_11 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBas
 const _hoisted_12 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("hr", { class: "mb-8" }, null, -1));
 const _hoisted_13 = { class: "relative" };
 const _hoisted_14 = { class: "flex gap-1 flex-column" };
-const _hoisted_15 = {
+const _hoisted_15 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("div", { class: "text-xs text-neutral-500 dark:text-neutral-400 formkit-help" }, "請填寫「已完成露天會員認證」且「符合露天市集規範」之露天帳號", -1));
+const _hoisted_16 = {
   key: 0,
   class: "absolute z-10 overflow-hidden bg-white border-2 border-gray-500 rounded-md left-20",
   style: { "top": "-220px" }
 };
-const _hoisted_16 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("div", { class: "p-2 m-2" }, [
+const _hoisted_17 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("div", { class: "p-2 m-2" }, [
   /* @__PURE__ */ createTextVNode("帳號可前往"),
   /* @__PURE__ */ createBaseVNode("a", {
     href: "https://member.ruten.com.tw/user/editprofile.php",
@@ -15120,18 +15121,18 @@ const _hoisted_16 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBas
   }, " 「露天市集 > 賣家中心 > 帳號 > 修改會員資料」"),
   /* @__PURE__ */ createTextVNode("查詢")
 ], -1));
-const _hoisted_17 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("img", {
+const _hoisted_18 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("img", {
   style: { "max-width": "600px" },
   src: "https://img.pcstore.com.tw/adm_img/st/ruten_buyinfo3.jpg",
   alt: "如何查詢露天帳號？"
 }, null, -1));
-const _hoisted_18 = [
-  _hoisted_16,
-  _hoisted_17
+const _hoisted_19 = [
+  _hoisted_17,
+  _hoisted_18
 ];
-const _hoisted_19 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
-const _hoisted_20 = { class: "block text-neutral-700 text-sm font-bold mb-1 !mb-0 !font-normal !text-sm dark:text-neutral-300 formkit-label" };
-const _hoisted_21 = ["href"];
+const _hoisted_20 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
+const _hoisted_21 = { class: "block text-neutral-700 text-sm font-bold mb-1 !mb-0 !font-normal !text-sm dark:text-neutral-300 formkit-label" };
+const _hoisted_22 = ["href"];
 const _sfc_main = {
   __name: "AppFree",
   setup(__props) {
@@ -15144,6 +15145,7 @@ const _sfc_main = {
     const casePrice = ref(0);
     const caseContractNo = ref("");
     const ruten_account = ref("");
+    const boss_mobile = ref("");
     const isShowDescImage = ref(false);
     const shipway = ref("");
     const shipwayList = ref([
@@ -15329,6 +15331,7 @@ const _sfc_main = {
                           }
                         }, {
                           help: withCtx(() => [
+                            _hoisted_15,
                             createBaseVNode("span", {
                               class: "block mb-1 text-sm font-bold text-blue-400 cursor-pointer",
                               onClick: _cache[0] || (_cache[0] = ($event) => isShowDescImage.value = !isShowDescImage.value)
@@ -15337,8 +15340,18 @@ const _sfc_main = {
                           _: 1
                         }, 8, ["modelValue", "validation-rules"])
                       ]),
-                      isShowDescImage.value ? (openBlock(), createElementBlock("div", _hoisted_15, _hoisted_18)) : createCommentVNode("", true)
+                      isShowDescImage.value ? (openBlock(), createElementBlock("div", _hoisted_16, _hoisted_19)) : createCommentVNode("", true)
                     ]),
+                    createVNode(_component_FormKit, {
+                      label: "聯絡人手機",
+                      type: "text",
+                      name: "boss_mobile",
+                      modelValue: boss_mobile.value,
+                      "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => boss_mobile.value = $event),
+                      validation: "required|matches:/^09\\d{8}$/",
+                      maxlength: "10",
+                      "validation-messages": { matches: "手機格式錯誤" }
+                    }, null, 8, ["modelValue"]),
                     createVNode(_component_FormKit, {
                       label: "商品預設運送方式",
                       type: "select",
@@ -15349,8 +15362,8 @@ const _sfc_main = {
                     }, {
                       help: withCtx(() => [
                         createBaseVNode("span", { class: "text-neutral-500 text-xs dark:text-neutral-400 formkit-help" }, [
-                          createTextVNode(" 搬家到露天的商品會套用此運送方式。"),
-                          _hoisted_19,
+                          createTextVNode(" 搬家商品之「露天運送方式」將儘量與商店街原設定值一致，若因兩個平台之規範不同以致設定值無法同步，將套用此「商品預設運送方式」。"),
+                          _hoisted_20,
                           createTextVNode(" 請確認選擇的運送方式在"),
                           createBaseVNode("a", {
                             onClick: open_box,
@@ -15371,13 +15384,13 @@ const _sfc_main = {
                       "validation-visibility": "dirty"
                     }, {
                       label: withCtx(() => [
-                        createBaseVNode("span", _hoisted_20, [
+                        createBaseVNode("span", _hoisted_21, [
                           createTextVNode(" 我同意 "),
                           createBaseVNode("a", {
                             href: `show_contract.htm?type=apply&contractno=${caseContractNo.value}`,
                             target: "_blank",
                             class: "text-blue-400"
-                          }, "【露天VIP搬家服務條款】", 8, _hoisted_21),
+                          }, "【露天VIP搬家服務條款】", 8, _hoisted_22),
                           createTextVNode(" 之約定 ")
                         ])
                       ]),
@@ -15404,7 +15417,7 @@ const _sfc_main = {
     };
   }
 };
-const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-6ca55b76"]]);
+const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-6d62c480"]]);
 const parents = /* @__PURE__ */ new Set();
 const coords = /* @__PURE__ */ new WeakMap();
 const siblings = /* @__PURE__ */ new WeakMap();
