@@ -14980,6 +14980,7 @@ function postData(btype, caseData, formData) {
   body.append("totalamount", caseData.casePrice.value);
   body.append("contractno", caseData.caseContractNo.value);
   body.append("caseid", caseData.caseId.value);
+  body.append("phone", formData.boss_mobile);
   body.append("rutid", formData.ruten_account);
   body.append("shipway", formData.shipway);
   return axios.post(
